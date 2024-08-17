@@ -8,6 +8,7 @@
   - zsh
 - name: Install oh-my-zsh
   shell: curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+  become_user: corni
   tags:
   - zsh
 - name: Add auto-suggestion to zsh
