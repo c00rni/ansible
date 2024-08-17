@@ -1,0 +1,11 @@
+  - name: Install system package 1 (build essential, cmake)
+    become: true
+    apt:
+      name: ["build-essential", "cmake", "pkg-config", "libpthread-stubs0-dev"]
+    tags:
+    - core
+  - name: Install essentials softwares
+    apt:
+      name: ["curl", "git", "htop", "golang", "i3", "python3", "tmux", "python3-pip", "fzf", "xclip", "neovim", "stow", "tldr"]
+    tags:
+    - core

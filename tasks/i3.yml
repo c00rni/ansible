@@ -1,0 +1,4 @@
+  - name: Install i3 window manager 
+    apt: name=i3
+    tags:
+    - i3

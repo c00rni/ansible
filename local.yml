@@ -1,0 +1,17 @@
+- hosts: localhost
+  pre_tasks:
+    - name: Update cache
+      become: true
+      apt:
+        force_apt_get: true
+        update_cache: true
+        state: present
+      tags:
+      - zsh
+      - i3
+      - core
+  tasks:
+  - import_tasks: tasks/zsh.yml
+  - import_tasks: tasks/i3.yml
+  - import_tasks: tasks/core.yml
+  - import_tasks: tasks/dotfiles.yml
