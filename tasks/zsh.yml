@@ -2,21 +2,34 @@
   apt: name=zsh
   tags:
   - zsh
-- name: Make zsh principale shell
-  shell: chsh -s `which zsh`
+
+- name: Check that the Oh-my-zsh conf exists
+  stat:
+    path: /home/corni/.oh-my-zsh
+  register: oh_my_stats
   tags:
   - zsh
-- name: Install oh-my-zsh
-  shell: curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+
+- name: Oh-My-Zsh
+  become_user: corni
+  shell: runuser -l corni -c 'curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh > ~/.oh-my-installer && chmod +x ~/.oh-my-installer && ~/.oh-my-installer'
   tags:
   - zsh
+
 - name: Add auto-suggestion to zsh
+  become_user: corni
   tags:
   - zsh
   ansible.builtin.git:
     repo: 'https://github.com/zsh-users/zsh-autosuggestions.git'
     dest: '~/.oh-my-zsh/plugins/zsh-autosuggestions'
+
+- name: Make zsh principale shell
+  shell: chsh corni -s `which zsh`
+  tags:
+  - zsh
+
 - name: update out zschrc
   tags:
   - zsh
-  shell: sed -ie "s/(git/(git zsh-autosuggestions/" ~/.zshrc
+  shell: runuser -l corni -c 'sed -ie "s/(git/(git zsh-autosuggestions/" ~/.zshrc'

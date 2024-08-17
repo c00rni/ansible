@@ -1,7 +1,8 @@
 - name: Cloning .dotfiles
+  become_user: corni
   ansible.builtin.git:
     repo: 'https://github.com/c00rni/.dotfiles'
-    dest: "{{ lookup('env', 'HOME') }}/.dotfiles"
+    dest: "/home/corni/.dotfiles"
     recursive: yes
     update: yes
     accept_hostkey: yes
@@ -9,11 +10,16 @@
     version: main
   tags:
     - dotfiles
+
 - name: Stow dotfiles
-  shell: cd $HOME/.dotfiles && ./ubuntu
+  become: true
+  become_user: corni
+  shell: cd /home/corni/.dotfiles && ./ubuntu
   tags:
     - dotfiles
+
 - name: Replace existing files
-  shell: cd $HOME/.dotfiles && git restore .
+  become_user: corni
+  shell: cd /home/corni/.dotfiles && git restore .
   tags:
     - dotfiles
