@@ -22,7 +22,7 @@
   - zsh
   ansible.builtin.git:
     repo: 'https://github.com/zsh-users/zsh-autosuggestions.git'
-    dest: '~/.oh-my-zsh/plugins/zsh-autosuggestions'
+    dest: '/home/corni/.oh-my-zsh/plugins/zsh-autosuggestions'
 
 - name: Make zsh principale shell
   shell: chsh corni -s `which zsh`

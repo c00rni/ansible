@@ -6,6 +6,6 @@
     - core
   - name: Install essentials softwares
     apt:
-      name: ["curl", "git", "htop", "golang", "i3", "feh", "python3", "tmux", "python3-pip", "fzf", "xclip", "neovim", "stow", "tldr"]
+      name: ["curl", "git", "htop", "golang", "i3", "feh", "python3", "tmux", "python3-pip", "fzf", "xclip", "neovim", "stow", "tldr", "i3blocks", "pulseaudio-utils"]
     tags:
     - core
