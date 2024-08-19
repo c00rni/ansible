@@ -14,12 +14,12 @@
 - name: Stow dotfiles
   become: true
   become_user: corni
-  shell: cd /home/corni/.dotfiles && ./ubuntu
+  shell: runuser -l corni -c 'cd /home/corni/.dotfiles && ./ubuntu'
   tags:
     - dotfiles
 
 - name: Replace existing files
   become_user: corni
-  shell: cd /home/corni/.dotfiles && git restore .
+  shell: runuser -l corni -c 'cd /home/corni/.dotfiles && git restore .'
   tags:
     - dotfiles

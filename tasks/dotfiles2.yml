@@ -1,0 +1,11 @@
+# clone down the dotfiles and recurse the submodules (which are private)
+- name: Cloning .dotfiles
+  ansible.builtin.git:
+    repo: 'git@github.com:c00rni/.dotfiles.git'
+    dest: "{{ lookup('env', 'HOME') }}/.dotfiles"
+    recursive: yes
+    update: yes
+    accept_hostkey: yes
+    version: master
+  tags:
+    - dotfiles
