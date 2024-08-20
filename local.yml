@@ -1,4 +1,7 @@
 - hosts: localhost
+  vars:
+    source_key: "./.ssh/id_rsa"
+    dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa"
   pre_tasks:
     - name: Update cache
       become: true
@@ -7,12 +10,11 @@
         update_cache: true
         state: present
       tags:
-      - zsh
-      - i3
-      - core
+      - ssh 
       - dotfiles
+      - zsh
   tasks:
   - import_tasks: tasks/zsh.yml
-  - import_tasks: tasks/i3.yml
-  - import_tasks: tasks/core.yml
+  - import_tasks: tasks/ssh.yml
   - import_tasks: tasks/dotfiles.yml
+  - import_tasks: tasks/i3.yml

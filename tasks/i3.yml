@@ -1,4 +1,8 @@
-  - name: Install i3 window manager 
-    apt: name=i3
+  - name: Install i3 interface tools
+    become: true
+    apt:
+      name: ["i3", "feh", "i3blocks", "pulseaudio-utils"]
     tags:
+    - install
     - i3
+
