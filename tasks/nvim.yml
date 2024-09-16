@@ -1,0 +1,7 @@
+- name: Install nvim basic tools
+  become: true
+  apt:
+    name: ["make", "gcc", "ripgrep", "unzip", "git", "xclip", "neovim"]
+  tags:
+  - install
+  - nvim

@@ -6,7 +6,9 @@
     - install
 
   - name: Install essentials softwares
+    become: true
     apt:
       name: ["curl", "git", "htop", "golang", "i3", "feh", "python3", "tmux", "python3-pip", "fzf", "xclip", "neovim", "stow", "tldr", "i3blocks", "pulseaudio-utils"]
     tags:
     - install
+    - i3

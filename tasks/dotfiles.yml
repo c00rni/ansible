@@ -9,12 +9,14 @@
     version: main
   tags:
     - dotfiles
+    - i3
 - name: Install Stow
   become: true
   apt: name=stow
   tags:
     - dotfiles
     - install
+    - i3
 - name: Install zsh
   become: true
   apt: name=zsh
@@ -25,10 +27,10 @@
 - name: Stow dotfiles
   ansible.builtin.script:
     cmd: "{{ lookup('env', 'HOME') }}/.dotfiles/ubuntu"
-    #shell: cd "{{ lookup('env', 'HOME') }}/.dotfiles && ./ubuntu"
   tags:
     - dotfiles
 - name: Replace existing files
   shell: cd /home/corni/.dotfiles && git restore .
   tags:
     - dotfiles
+    - i3
