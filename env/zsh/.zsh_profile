@@ -1,0 +1,9 @@
+# C-F to fuzzy find into main directories
+bindkey -s ^f "tmux-sessionizer\n"
+bindkey -s ^h "tmux-cht.sh\n"
+
+# Add .local/bin to path
+export PATH=$HOME/.local/bin:$PATH
+
+# Add go path
+export PATH=$PATH:$HOME/go/bin
